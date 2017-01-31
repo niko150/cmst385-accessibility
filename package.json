@@ -1,0 +1,39 @@
+{
+  "name": "cmst385-accessibility",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp && node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "config": "^1.24.0",
+    "firebase": "^3.6.7",
+    "firebase-rest": "^1.0.0",
+    "firebase-token-generator": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-jsonwebtoken": "^1.1.6",
+    "koa-qs": "^2.0.0",
+    "koa-router": "^7.0.1",
+    "md5": "^2.2.1",
+    "then-yield": "0.0.1",
+    "vue": "^2.1.10",
+    "vue-router": "^2.2.0",
+    "vuex": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "gulp-clean": "^0.3.2"
+  }
+}

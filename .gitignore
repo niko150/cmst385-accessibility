@@ -1,0 +1,6 @@
+node_modules/*
+!node_modules/vue/dist/vue.js
+!node_modules/vuex/dist/vuex.js
+!node_modules/vue-router/dist/vue-router.js
+npm-debug.log
+serverCredentials.json
