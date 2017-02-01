@@ -20,9 +20,9 @@ var _createClass2 = require('babel-runtime/helpers/createClass');
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _firebaseRest = require('firebase-rest');
+var _restfulFirebase = require('./restful-firebase');
 
-var _firebaseRest2 = _interopRequireDefault(_firebaseRest);
+var _restfulFirebase2 = _interopRequireDefault(_restfulFirebase);
 
 var _config = require('config');
 
@@ -42,40 +42,31 @@ var FirebaseDb = function () {
   (0, _createClass3.default)(FirebaseDb, [{
     key: 'tx',
     value: function () {
-      var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(command, pathRef, pathFinal, payload, queryParams) {
-        var path,
-            dbcmd,
-            unary,
-            operation,
-            _args = arguments;
+      var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(command, path, payload, queryParams) {
+        var dbcmd, unary, operation;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(_args);
-                path = pathRef;
-
-                if (pathFinal) path += pathFinal;
-
-                dbcmd = FirebaseDb.db[FirebaseDb.fbcrest[command]].bind(FirebaseDb.db);
-                unary = command === 'get' || command === 'delete';
-                _context.next = 7;
+                dbcmd = FirebaseDb.ref[FirebaseDb.fbcrest[command]];
+                unary = command === 'get' || commmand === 'delete';
+                _context.next = 4;
                 return unary ? dbcmd(path, queryParams) : dbcmd(path, payload, queryParams);
 
-              case 7:
+              case 4:
                 operation = _context.sent;
 
                 if (operation.ok) {
-                  _context.next = 10;
+                  _context.next = 7;
                   break;
                 }
 
                 throw new Error('[FirebaseDb] ' + FirebaseDb.fbcrest[command] + ' - error with TX. (status ' + operation.status + ': ' + operation.statusText + ')');
 
-              case 10:
+              case 7:
                 return _context.abrupt('return', operation.body);
 
-              case 11:
+              case 8:
               case 'end':
                 return _context.stop();
             }
@@ -83,7 +74,7 @@ var FirebaseDb = function () {
         }, _callee, this);
       }));
 
-      function tx(_x, _x2, _x3, _x4, _x5) {
+      function tx(_x, _x2, _x3, _x4) {
         return _ref.apply(this, arguments);
       }
 
@@ -100,6 +91,10 @@ FirebaseDb.fbcrest = {
   post: 'push',
   delete: 'remove'
 };
-FirebaseDb.db = new _firebaseRest2.default.JSONClient('https://' + _config2.default.firebase.project + '.firebaseio.com', { auth: _config2.default.firebase.auth });
+FirebaseDb.db = _restfulFirebase2.default.factory(_config2.default.firebase.project);
+FirebaseDb.ref = FirebaseDb.db({
+  paths: '/',
+  auth: _config2.default.firebase.auth
+});
 
 exports.default = FirebaseDb;

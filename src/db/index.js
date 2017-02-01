@@ -1,2 +1,2 @@
-import FirebaseDb from './firebaseDb'
-export default  new FirebaseDb()
+import {default as ModelDb} from './firebaseDb'
+export default new ModelDb()

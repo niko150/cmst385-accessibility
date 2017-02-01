@@ -6,6 +6,13 @@ module.exports = {
 	serverKey: 'cmst385-accessibility',
 	firebase: {
 		auth: tokenGenerator.createToken({ uid: "9w2XxhNlCAbrD4JV5zJbHLvk4tE2" }), 
-		project: 'cmst385-accessibility'
+		project: 'cmst385-accessibility',
+		initializeConfig: {
+			apiKey: "AIzaSyD5C7keyrldPDYSfR6k3X0HiO7RT3PUgx0",
+	    authDomain: "cmst385-accessibility.firebaseapp.com",
+  	  databaseURL: "https://cmst385-accessibility.firebaseio.com",
+    	storageBucket: "cmst385-accessibility.appspot.com",
+    	messagingSenderId: "131765912631"
+		}
 	}
 }

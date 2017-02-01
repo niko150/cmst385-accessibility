@@ -3,7 +3,8 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
 import Qs from 'koa-qs'
-import jwt, { fromAuthorizationHeader, sign } from 'koa-jsonwebtoken';
+import jwt, { fromAuthorizationHeader, sign } from './koa-jsonwebtoken-with-except';
+import pass from 'koa-pass'
 import config from 'config'
 import fs from 'fs'
 //Internal
@@ -35,13 +36,19 @@ credentialsPromise.then(serverCredentials => {
     id: 1 // we're just making a dummy profile to connect with
   }
   console.log('loaded serverCredentials: ' + 
-    sign(profile, serverCredentials.shared/*, {expiresIn: 1111}*/))    
-  app.use(
-    jwt({
+    sign(profile, serverCredentials.shared/*, {expiresIn: 1111}*/))
+    
+  app.use(jwt({
       secret: serverCredentials.shared, 
       extractToken: fromAuthorizationHeader
     })
-    .unless({ path: [/^\/(?!api)/] })
+   //.unless({ path: [/^\/(?!api)/] })
+    // .pass([
+      // { method: 'GET', path: '/api/Classes' },
+      // { path: '^\/(?!api)' }
+    // ])
+    .except({ method: 'GET', path: /^\/api\/Classes/ })
+    .and({ path: /^\/(?!api)/ })
   );
 
   const contract = new Contract()

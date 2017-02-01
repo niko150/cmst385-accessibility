@@ -9,26 +9,26 @@ class ModelUri {
   }
 
   wireRouter(router) {
-    const allAtName = new RegExp('^\/api\/'+this.name+'(?:\/|$)')
+    const allAtName = new RegExp('^\/api\/'+this.name+'(\/|$)')
     router.get(allAtName, async (ctx, next) => {
-	    ctx.body = await this.get(ctx.path, ctx.query)
+	    ctx.body = await this.get(ctx.params[0], ctx.query)
     })
     router.put(allAtName, async (ctx, next) => {
-	    ctx.body = await this.put(ctx.path, ctx.request.body, ctx.query)
+      ctx.body = await this.put(ctx.params[0], ctx.request.body, ctx.query)
     })
     router.patch(allAtName, async (ctx, next) => {
-	    ctx.body = await this.patch(ctx.path, ctx.request.body, ctx.query)
+	    ctx.body = await this.patch(ctx.params[0], ctx.request.body, ctx.query)
     })
     router.post(allAtName, async (ctx, next) => {
-	    ctx.body = await this.post(ctx.path, ctx.request.body, ctx.query)
+	    ctx.body = await this.post(ctx.params[0], ctx.request.body, ctx.query)
     })
     router.delete(allAtName, async (ctx, next) => {
-	    ctx.body = await this.delete(ctx.path, ctx.query)
+	    ctx.body = await this.delete(ctx.params[0], ctx.query)
     })
   }
 
-  get(pathFinal, queryParams){
-    return this.db.tx('get', this.name, pathFinal, queryParams)
+  async get(pathFinal, queryParams){
+    return await this.db.tx('get', this.name, pathFinal, undefined, queryParams)
   }
   async put(pathFinal, payload, queryParams){
     return await this.db.tx('put', this.name, pathFinal, payload, queryParams)    
@@ -40,7 +40,7 @@ class ModelUri {
     return await this.db.tx('post', this.name, pathFinal, payload, queryParams)
   }
   async delete(pathFinal, queryParams){
-    return await this.db.tx('delete', this.name, pathFinal, queryParams)
+    return await this.db.tx('delete', this.name, pathFinal, undefined, queryParams)
   }
 }
 

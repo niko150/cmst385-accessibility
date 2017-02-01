@@ -8,7 +8,7 @@ const Classes = {
     url: '', // optional
     prerequisites: [], // optional nested, default record: {department, number}
     recommended: [], // optional nested
-    equivalents: [] // optional nested
+    equivalencies: [] // optional nested
   }
 }
 

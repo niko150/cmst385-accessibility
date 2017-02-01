@@ -1,0 +1,129 @@
+{
+  "-KbvAXsd8EC4Ig12gsRR": {
+    "department": "CMST",
+    "description": "A study of web design, tools, and technology principles. The goal is to plan and produce a professional website. Topics include Internet protocols; usability; accessibility; and social, ethical, and legal issues related to website production. Focus is on Extensible HyperText Markup Language (XHTML) and cascading style sheets (CSS).",
+    "equivalencies": [
+      {
+        "department": "CAPP",
+        "number": "385"
+      }
+    ],
+    "number": "385",
+    "prerequisites": [
+      [
+        {
+          "department": "CMST",
+          "number": "290"
+        },
+        {
+          "department": "CMIS",
+          "number": "102"
+        },
+        {
+          "department": "IFSM",
+          "number": "201"
+        },
+        {
+          "department": "CMST",
+          "number": "103"
+        }
+      ]
+    ],
+    "recommended": [
+      {
+        "department": "CMST",
+        "number": "295"
+      }
+    ],
+    "title": "Principles of Web Design and Technology I",
+    "url": "https://www.asia.umuc.edu/syllabi/generic/ugrd/cmst385"
+  },
+  "-KbvEEOmV7B4-388liVG": {
+    "department": "CMST",
+    "description": "The aim is to identify established digital image editing tools, techniques, and best practices; create new images; and edit existing images. Topics include terminology, tools, theory, and processes from concept to completion. Discussion covers fundamental concepts and practical techniques, as well as ethical and legal issues. Emphasis is on applying these concepts and techniques to produce high-quality digital works for multiple platforms, including print, Web, and other electronic media.",
+    "number": "325",
+    "title": "Image Editing"
+  },
+  "-KbvEJvlUNIbJJ_mqLJ5": {
+    "department": "CMST",
+    "description": "A hands-on, project-based introduction to the tools, concepts, processes, and methods of electronic (desktop) publishing. This aim is to use Adobe InDesign (or another professional electronic publishing software program) to create electronic publications for various media formats following fundamental design principles. Topics include the history and evolution of publishing, working with color, incorporating graphics, principles and elements of design, publication workflow, emerging technologies, careers in the field, ethical and legal considerations, and collaborative design.",
+    "equivalencies": [
+      {
+        "department": "CAPP",
+        "number": "310"
+      },
+      {
+        "department": "CAPP",
+        "number": "398B"
+      }
+    ],
+    "number": "310",
+    "prerequisites": [
+      [
+        {
+          "department": "IFSM",
+          "number": "201"
+        },
+        {
+          "department": "CMST",
+          "number": "103"
+        }
+      ]
+    ],
+    "recommended": [
+      {
+        "department": "CMST",
+        "number": "290"
+      },
+      {
+        "department": "CMST",
+        "number": "295"
+      }
+    ],
+    "title": "Fundamentals of Electronic Publishing",
+    "url": "https://www.asia.umuc.edu/syllabi/generic/ugrd/cmst310"
+  },
+  "-KbvEOCZWpMDCBOr6gsW": {
+    "department": "CMST",
+    "description": "An introduction to an overview of the principles, practices, techniques, and theories that govern the design and development of digital media in Web technology, digital design, and motion graphics. The goal is to effectively follow proven design theory in creating digital media for print, Web, and mobile devices. Topics include usability, accessibility, ethics, and emerging technologies. Career paths in the digital media industry are analyzed.",
+    "number": "295",
+    "title": "Fundamentals of Digital Media",
+    "url": "https://www.asia.umuc.edu/syllabi/generic/ugrd/cmst295"
+  },
+  "-KbvEWE9K4TdLtx7AcUY": {
+    "department": "CMST",
+    "description": "An introduction to the principles, practices, techniques, and theories that govern the use of programming languages in the design and development of digital media. The objective is to effectively use proven programming theory to support digital media design for print, Web, and mobile devices. Topics include the logic of constructing a computer program, the practical aspects of integrating program modules as a unified whole, the use of algorithms as an approach to problem solving, and the basic features of object-oriented languages. Projects involve creation of pseudo code and actual code.",
+    "number": "290",
+    "title": "Introduction to Interactive Design",
+    "url": "https://www.asia.umuc.edu/syllabi/generic/ugrd/cmst290"
+  },
+  "-KbvEbC4xyuclI1VRfzV": {
+    "department": "IFSM",
+    "description": "A practical application of information technology for personal and professional productivity. The objective is to use technology appropriately and fluently to organize, analyze, and communicate information. Topics include hardware, software, office applications, information security and ethics, and the Internet.",
+    "equivalencies": [
+      {
+        "department": "BMGT",
+        "number": "301"
+      },
+      {
+        "department": "CAPP",
+        "number": "101"
+      },
+      {
+        "department": "CAPP",
+        "number": "300"
+      },
+      {
+        "department": "CMST",
+        "number": "300"
+      },
+      {
+        "department": "TMGT",
+        "number": "201"
+      }
+    ],
+    "number": "201",
+    "title": "Concepts and Applications of Information Technology",
+    "url": "https://www.asia.umuc.edu/syllabi/generic/ugrd/ifsm201"
+  }
+}
