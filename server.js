@@ -34,10 +34,14 @@ credentialsPromise.then(serverCredentials => {
   const profile = {
     id: 1 // we're just making a dummy profile to connect with
   }
-  console.log('loaded serverCredentials: ' + sign(profile, serverCredentials.shared/*, {expiresIn: 1111}*/))    
+  console.log('loaded serverCredentials: ' + 
+    sign(profile, serverCredentials.shared/*, {expiresIn: 1111}*/))    
   app.use(
-    jwt({secret: serverCredentials.shared, extractToken: fromAuthorizationHeader})
-      .unless({ path: [/^\/(?!api)/] })
+    jwt({
+      secret: serverCredentials.shared, 
+      extractToken: fromAuthorizationHeader
+    })
+    .unless({ path: [/^\/(?!api)/] })
   );
 
   const contract = new Contract()
