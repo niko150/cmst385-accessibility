@@ -28,9 +28,9 @@ var _koaJsonwebtokenWithExcept = require('./koa-jsonwebtoken-with-except');
 
 var _koaJsonwebtokenWithExcept2 = _interopRequireDefault(_koaJsonwebtokenWithExcept);
 
-var _koaPass = require('koa-pass');
+var _koaSendfile = require('koa-sendfile');
 
-var _koaPass2 = _interopRequireDefault(_koaPass);
+var _koaSendfile2 = _interopRequireDefault(_koaSendfile);
 
 var _config = require('config');
 
@@ -64,7 +64,7 @@ var app = new _koa2.default();
 //Internal
 //External
 
-(0, _koaQs2.default)(app);
+(0, _koaQs2.default)(app); // let's give our app nice query strings
 
 app.use(_handleErrors2.default);
 app.use((0, _koaBodyparser2.default)());
@@ -84,6 +84,7 @@ router.get('/api/error', (0, _asyncToGenerator3.default)(_regenerator2.default.m
     }
   }, _callee, undefined);
 })));
+
 router.get('/', function () {
   var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(ctx, next) {
     return _regenerator2.default.wrap(function _callee2$(_context2) {
@@ -99,7 +100,7 @@ router.get('/', function () {
 
           case 2:
             ctx.type = 'html';
-            ctx.body = _fs2.default.createReadStream('views/index.html');
+            ctx.body = _fs2.default.createReadStream('public/index.html');
 
           case 4:
           case 'end':
@@ -113,6 +114,35 @@ router.get('/', function () {
     return _ref2.apply(this, arguments);
   };
 }());
+router.get(/^\/public\/?(.*)$/, function () {
+  var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(ctx, next) {
+    var fspath, fh, stats;
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            fspath = ctx.params[0] || 'index.html';
+            fh = _config2.default.public + '/' + fspath;
+            _context3.next = 4;
+            return (0, _koaSendfile2.default)(ctx, fh);
+
+          case 4:
+            stats = _context3.sent;
+
+            if (!ctx.status) undefined.throw(404);
+
+          case 6:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, undefined);
+  }));
+
+  return function (_x3, _x4) {
+    return _ref3.apply(this, arguments);
+  };
+}());
 
 _auth.serverCredentials.then(function (serverCredentials) {
   var profile = {
@@ -123,13 +153,7 @@ _auth.serverCredentials.then(function (serverCredentials) {
   app.use((0, _koaJsonwebtokenWithExcept2.default)({
     secret: serverCredentials.shared,
     extractToken: _koaJsonwebtokenWithExcept.fromAuthorizationHeader
-  })
-  //.unless({ path: [/^\/(?!api)/] })
-  // .pass([
-  // { method: 'GET', path: '/api/Classes' },
-  // { path: '^\/(?!api)' }
-  // ])
-  .except({ method: 'GET', path: /^\/api\/Classes/ }).and({ path: /^\/(?!api)/ }));
+  }).except({ method: 'GET', path: /^\/api\/Classes/ }).and({ path: /^\/api\/error/ }).and({ path: /^\/(?!api)/ }));
 
   var contract = new _contract2.default();
   contract.addCollection(_Classes2.default, _db2.default, router).then(function () {

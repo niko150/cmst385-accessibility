@@ -39,7 +39,7 @@ var ModelUri = function () {
     value: function wireRouter(router) {
       var _this = this;
 
-      var allAtName = new RegExp('^\/api\/' + this.name + '(\/|$)');
+      var allAtName = new RegExp('^\/api\/' + this.name + '\/?(.*)$');
       router.get(allAtName, function () {
         var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(ctx, next) {
           return _regenerator2.default.wrap(function _callee$(_context) {

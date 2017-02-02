@@ -12,7 +12,7 @@ class FirebaseDb {
     console.log(arguments)
     let path = pathRef
     if(pathFinal)
-      path += pathFinal
+      path += '/' + pathFinal
 
     const dbcmd = FirebaseDb.db[FirebaseDb.fbcrest[command]].bind(FirebaseDb.db)
     const unary = (command === 'get' || command === 'delete')

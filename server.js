@@ -4,7 +4,7 @@ import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
 import Qs from 'koa-qs'
 import jwt, { fromAuthorizationHeader, sign } from './koa-jsonwebtoken-with-except';
-import pass from 'koa-pass'
+import sendfile from 'koa-sendfile'
 import config from 'config'
 import fs from 'fs'
 //Internal
@@ -15,7 +15,7 @@ import Classes from './db/models/Classes'
 import {serverCredentials as credentialsPromise} from './auth'
  
 const app = new Koa()
-Qs(app)
+Qs(app) // let's give our app nice query strings
  
 app.use(handleErrors)
 app.use(bodyParser())
@@ -24,11 +24,18 @@ const router = new Router()
 router.get('/api/error', async () => {
   throw Error('Error handling works!')
 })
+
 router.get('/', async (ctx, next) => {
   if (/^\/api/.test(ctx.url)) 
     return next()
   ctx.type = 'html'
-  ctx.body = fs.createReadStream('views/index.html')
+  ctx.body = fs.createReadStream('public/index.html')
+})
+router.get(/^\/public\/?(.*)$/, async (ctx, next) => {
+  let fspath = ctx.params[0] || 'index.html'
+  let fh = config.public + '/' + fspath
+  let stats = await sendfile(ctx, fh)
+  if (!ctx.status) this.throw(404)
 })
 
 credentialsPromise.then(serverCredentials => {
@@ -42,12 +49,8 @@ credentialsPromise.then(serverCredentials => {
       secret: serverCredentials.shared, 
       extractToken: fromAuthorizationHeader
     })
-   //.unless({ path: [/^\/(?!api)/] })
-    // .pass([
-      // { method: 'GET', path: '/api/Classes' },
-      // { path: '^\/(?!api)' }
-    // ])
     .except({ method: 'GET', path: /^\/api\/Classes/ })
+    .and({ path: /^\/api\/error/ })
     .and({ path: /^\/(?!api)/ })
   );
 

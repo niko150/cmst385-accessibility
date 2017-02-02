@@ -55,7 +55,7 @@ var FirebaseDb = function () {
                 console.log(_args);
                 path = pathRef;
 
-                if (pathFinal) path += pathFinal;
+                if (pathFinal) path += '/' + pathFinal;
 
                 dbcmd = FirebaseDb.db[FirebaseDb.fbcrest[command]].bind(FirebaseDb.db);
                 unary = command === 'get' || command === 'delete';

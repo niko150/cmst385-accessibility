@@ -3,6 +3,7 @@ const tokenGenerator = new FirebaseTokenGenerator("mBc9eBexg08sQSnfnR1KlhyHkVE7Z
 
 module.exports = {
 	port: 8080,
+	public: 'dist/public',
 	serverKey: 'cmst385-accessibility',
 	firebase: {
 		auth: tokenGenerator.createToken({ uid: "9w2XxhNlCAbrD4JV5zJbHLvk4tE2" }), 

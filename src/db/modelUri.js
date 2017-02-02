@@ -9,7 +9,7 @@ class ModelUri {
   }
 
   wireRouter(router) {
-    const allAtName = new RegExp('^\/api\/'+this.name+'(\/|$)')
+    const allAtName = new RegExp('^\/api\/'+this.name+'\/?(.*)$')
     router.get(allAtName, async (ctx, next) => {
 	    ctx.body = await this.get(ctx.params[0], ctx.query)
     })
