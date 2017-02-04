@@ -23,21 +23,13 @@ gulp.task('src', () => {
 		.pipe(gulp.dest(dest));
 });
 
-/*gulp.task('node_modules', ['src'], () => {
-	return gulp.src([
-			'node_modules/vue/dist/vue.js', 
-			'node_modules/vue-router/dist/vue-router.js', 
-			'node_modules/vuex/dist/vuex.js'])
-		.pipe(gulp.dest(dest+'/public/node_modules'));
-});*/
-
 gulp.task('public', ['public/styles'], () => {
 	mkdirp.sync(dest+'/public/scripts')
-	return browserify({entries:'public/scripts/demo.js', debug:true})
+	return browserify({entries:'public/main.js', debug:true})
 		.transform(vueify)
 		.transform(babelify)
   	.bundle()
- 	.pipe(fs.createWriteStream(dest+'/public/scripts/index.js'))
+ 	.pipe(fs.createWriteStream(dest+'/public/index.js'))
 })
 
 gulp.task('public/styles', () => {
