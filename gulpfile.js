@@ -47,6 +47,8 @@ gulp.task('public/styles', () => {
 gulp.task('copy', () => {
 	gulp.src(['serverCredentials.json'])
 		.pipe(gulp.dest(dest))
+	gulp.src(['public/assets/**/*.png', 'public/assets/**/*.jpg'])
+		.pipe(gulp.dest(dest+'/public/assets'))
 	return gulp.src(['config/*.js'])
 		.pipe(gulp.dest(dest + '/config'))
 })

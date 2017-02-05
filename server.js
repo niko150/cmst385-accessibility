@@ -25,11 +25,27 @@ router.get('/api/error', async () => {
   throw Error('Error handling works!')
 })
 
-router.get('/', async (ctx, next) => {
+const default_route = async (ctx, next) => {
   if (/^\/api/.test(ctx.url)) 
     return next()
   ctx.type = 'html'
   ctx.body = fs.createReadStream('public/index.html')
+}
+
+router.get('/', default_route)
+router.get(/^\/assets\/(.*)$/, async (ctx, next) => {
+  let name = ctx.params[0]
+  let ext = name.split('.').slice(-1)[0] 
+  switch (ext) {
+    case 'png':
+      ctx.type='image/png'
+      break
+    case 'jpg':
+    case 'jpeg':
+      ctx.type='image/jpeg'
+      break
+  }
+  ctx.body = fs.createReadStream('public/assets/'+ctx.params[0])
 })
 router.get(/^\/public\/?(.*)$/, async (ctx, next) => {
   let fspath = ctx.params[0] || 'index.html'
@@ -57,6 +73,7 @@ credentialsPromise.then(serverCredentials => {
   const contract = new Contract()
   contract.addCollection(Classes, db, router).then(() => {
     app.use(router.routes())
+    app.use(default_route)
 
     app.listen(config.port, () => {
       console.info(`Listening to http://localhost:${config.port}`)

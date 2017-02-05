@@ -85,7 +85,7 @@ router.get('/api/error', (0, _asyncToGenerator3.default)(_regenerator2.default.m
   }, _callee, undefined);
 })));
 
-router.get('/', function () {
+var default_route = function () {
   var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(ctx, next) {
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
@@ -110,28 +110,37 @@ router.get('/', function () {
     }, _callee2, undefined);
   }));
 
-  return function (_x, _x2) {
+  return function default_route(_x, _x2) {
     return _ref2.apply(this, arguments);
   };
-}());
-router.get(/^\/public\/?(.*)$/, function () {
+}();
+
+router.get('/', default_route);
+router.get(/^\/assets\/(.*)$/, function () {
   var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(ctx, next) {
-    var fspath, fh, stats;
+    var name, ext;
     return _regenerator2.default.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            fspath = ctx.params[0] || 'index.html';
-            fh = _config2.default.public + '/' + fspath;
-            _context3.next = 4;
-            return (0, _koaSendfile2.default)(ctx, fh);
+            name = ctx.params[0];
+            ext = name.split('.').slice(-1)[0];
+            _context3.t0 = ext;
+            _context3.next = _context3.t0 === 'png' ? 5 : _context3.t0 === 'jpg' ? 7 : _context3.t0 === 'jpeg' ? 7 : 9;
+            break;
 
-          case 4:
-            stats = _context3.sent;
+          case 5:
+            ctx.type = 'image/png';
+            return _context3.abrupt('break', 9);
 
-            if (!ctx.status) undefined.throw(404);
+          case 7:
+            ctx.type = 'image/jpeg';
+            return _context3.abrupt('break', 9);
 
-          case 6:
+          case 9:
+            ctx.body = _fs2.default.createReadStream('public/assets/' + ctx.params[0]);
+
+          case 10:
           case 'end':
             return _context3.stop();
         }
@@ -141,6 +150,35 @@ router.get(/^\/public\/?(.*)$/, function () {
 
   return function (_x3, _x4) {
     return _ref3.apply(this, arguments);
+  };
+}());
+router.get(/^\/public\/?(.*)$/, function () {
+  var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(ctx, next) {
+    var fspath, fh, stats;
+    return _regenerator2.default.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            fspath = ctx.params[0] || 'index.html';
+            fh = _config2.default.public + '/' + fspath;
+            _context4.next = 4;
+            return (0, _koaSendfile2.default)(ctx, fh);
+
+          case 4:
+            stats = _context4.sent;
+
+            if (!ctx.status) undefined.throw(404);
+
+          case 6:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, undefined);
+  }));
+
+  return function (_x5, _x6) {
+    return _ref4.apply(this, arguments);
   };
 }());
 
@@ -158,6 +196,7 @@ _auth.serverCredentials.then(function (serverCredentials) {
   var contract = new _contract2.default();
   contract.addCollection(_Classes2.default, _db2.default, router).then(function () {
     app.use(router.routes());
+    app.use(default_route);
 
     app.listen(_config2.default.port, function () {
       console.info('Listening to http://localhost:' + _config2.default.port);

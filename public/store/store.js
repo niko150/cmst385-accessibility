@@ -16,10 +16,12 @@ const db = firebaseApp.database()
 var store = new Vuex.Store({
   state: {
     classes: {
-    }
+    },
+    title: 'CMST385-Accessibility'
   },
   getters: {
-    classes: state => state.classes
+    classes: state => state.classes,
+    title: state => state.title
   },
   mutations: VuexFire.mutations
 })
