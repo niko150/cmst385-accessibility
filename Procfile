@@ -1,1 +1,1 @@
-web: npm run clean && npm run start
+web: NODE_ENV=development npm run clean && npm run start
