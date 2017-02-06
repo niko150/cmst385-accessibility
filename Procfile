@@ -1,1 +1,1 @@
-web: npm run clean && npm start
+web: npm run clean && npm run start
