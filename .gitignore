@@ -3,8 +3,8 @@ node_modules/*
 !node_modules/vuex/dist/vuex.js
 !node_modules/vue-router/dist/vue-router.js
 npm-debug.log
-serverCredentials.json
-.idea/*
-public/config.js
+#serverCredentials.json
+#public/config.js
 dist/public/assets/Accessibility\.review\.phase\.1\.png
 dist/public/assets/logo\.png
+.idea/*

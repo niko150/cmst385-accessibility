@@ -2,7 +2,7 @@ const FirebaseTokenGenerator = require("firebase-token-generator")
 const tokenGenerator = new FirebaseTokenGenerator("mBc9eBexg08sQSnfnR1KlhyHkVE7Z2VurY3u6x2L")
 
 module.exports = {
-	port: 8080,
+	port: process.env.port || 8080,
 	public: 'dist/public',
 	serverKey: 'cmst385-accessibility',
 	firebase: {
