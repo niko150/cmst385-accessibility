@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "7.4.0"
+    "node": "7.4.0",
+    "npm": "4.0.5"
   },
   "dependencies": {
     "bluebird": "^3.4.7",
