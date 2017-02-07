@@ -38,7 +38,7 @@
     "vue-resource": "^1.1.2",
     "vue-router": "^2.2.0",
     "vuex": "^2.1.1",
-    "vuexfire": "^0.3.0"
+    "vuexfire": "^0.3.0",
     "babel": "^6.5.2",
     "babel-cli": "^6.22.2",
     "babel-plugin-syntax-async-functions": "^6.13.0",
