@@ -3,10 +3,10 @@
 if [ ! -f './dist/server.js' ]; then
 export NODE_ENV=development;
 export NPM_CONFIG_PRODUCTION=false;
-    npm clean;
+    npm run clean;
 export NODE_ENV=production;
 export NPM_CONFIG_PRODUCTION=false;
-    npm build
+    npm run build
 fi
 
 node dist/server.js
