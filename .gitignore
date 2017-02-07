@@ -5,6 +5,5 @@ node_modules/*
 npm-debug.log
 #serverCredentials.json
 #public/config.js
-dist/public/assets/Accessibility\.review\.phase\.1\.png
-dist/public/assets/logo\.png
+dist/*
 .idea/*

@@ -1,1 +1,1 @@
-web: npm run clean && npm run start
+web: /usr/bin/env bash ./serve.sh
