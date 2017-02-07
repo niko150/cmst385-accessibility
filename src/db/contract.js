@@ -1,4 +1,4 @@
-import ModelUri from './ModelUri'
+import ModelUri from './modelUri'
 
 class Contract {
   constructor() { this.modelUris = [] }
