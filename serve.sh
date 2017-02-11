@@ -5,7 +5,7 @@ export NODE_ENV=development;
 export NPM_CONFIG_PRODUCTION=false;
     npm run clean;
 export NODE_ENV=production;
-export NPM_CONFIG_PRODUCTION=false;
+export NPM_CONFIG_PRODUCTION=true;
     npm run build
 fi
 
