@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <router-link to="/" class="navbar-brand" v-bind:tabindex="home?-1:0">CMST 385 - Accessibility</router-link>
+          <router-link to="/" class="navbar-brand" v-bind:tabindex="home?-1:0">CMST 385 | Accessibility</router-link>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
