@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <router-link to="/classes" class="btn" active-class="btn-raised" v-bind:tabindex="tabIndex('/classes')" tag="li"><a>Classes</a></router-link>
-            <router-link to="/about" class="btn" active-class="btn-raised" v-bind:tabindex="tabIndex('/classes')" tag="li"><a>About</a></router-link>
+            <router-link to="/about" class="btn" active-class="btn-raised" v-bind:tabindex="tabIndex('/about')" tag="li"><a>About</a></router-link>
           </ul>
         </div>
       </div>
