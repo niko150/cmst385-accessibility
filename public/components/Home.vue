@@ -6,6 +6,7 @@
     <h2>Supporting Evidence of Accessibility</h2>
     <hr />
     <br />
+    <h3>TABINDEX</h3>
     <p>The header here contains 3 links, navigating to the pages of the site. The tabindex attribute is set programatically to aid accessibility for users with needs for enhanced keyboard navigation. On the home screen (here), the home link will not recieve focus. On the other two pages it will. Other content loaded in the header above these links will not displace the classes and about links in the tab order. To see where the tab focus is currently, a toggle is provided.</p>
     <div class="togglebutton">
       <label>
